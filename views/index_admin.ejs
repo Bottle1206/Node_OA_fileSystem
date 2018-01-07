@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			<%= title %>
+		</title>
+		<% include common/commonStyle %>
+		<link rel="stylesheet/less" href="/stylesheets/common/index.less"/>
+		<link rel="stylesheet/less" href="/stylesheets/index_admin.less"/>
+	</head>
+	<body>
+		<% include common/header %>
+		<div class="error-bar">添加成功！</div>
+		<div class="vessel container">
+			<div class="admin-operate">
+				<div class="operate-btns">
+					<button type="button" id="addBtn">添加新员工</button>
+					<button type="button" id="delBtn">删除员工</button>
+					<button type="button" id="editBtn">更新员工信息</button>
+				</div>
+				<div class="input-search">
+					<input type="text" id="searchUser" placeholder="输入要查询的员工姓名"/>
+					<label for="searchUser"></label>
+				</div>
+			</div>
+			<div class="user-list">
+				<table border="0" cellspacing="0" cellpadding="0" class="table table-hover" id="userList">
+					<thead>
+						<tr>
+							<th>选中</th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>职位</th>
+							<th>职级</th>
+							<th>所属上级</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<div class="modal fade" id="addNewUser">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <div class="modal-title">添加新员工</div>
+						<button type="button" class='close-btn' data-dismiss="modal"></button>
+		            </div>
+		            <div class="modal-body">
+		            	<div class="username-div">
+		            		<label for="username">姓名 
+		            			<span class="repeat-name">
+		            				*该姓名已存在
+		            			</span>
+		            		</label>
+			            	<input type="text" id="username"/>
+		            	</div>
+		            	<div class="position-div">
+		            		<label for="position">职级</label>
+			            	<select name="position" id="position">
+			            		<option value="web_engineer">web_engineer</option>
+					        	<option value="dataBase_engineer">dataBase_engineer</option>
+					        	<option value="Java_engineer">Java_engineer</option>
+					        	<option value="product_manager">product_manager</option>
+					        	<option value="UI_Designer">UI_Designer</option>
+					        	<option value="Hr">HR</option>
+					        	<option value="department_manager">department_manager</option>
+					        	<option value="general_manager">general_manager</option>
+			            	</select>
+		            	</div>
+		            	<div class="rank-div">
+		            		<label for="rank">职级</label>
+			            	<select name="rank" id="rank" class="rank">
+			            		<option value="1">办事员</option>
+			            		<option value="2">部门主管</option>
+			            		<option value="3">主管领导</option>
+			            	</select>
+		            	</div>
+		            	<div class="directManager-div">
+		            		<label for="directManager">直属上级</label>
+			            	<select name="directManager" id="directManager" class="direct-manager">
+			            		<option value=""></option>
+			            	</select>
+		            	</div>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default cancelBtn" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-danger sureBtn">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<div class="modal fade" id="editUser">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <div class="modal-title">更新员工信息</div>
+						<button type="button" class='close-btn' data-dismiss="modal"></button>
+		            </div>
+		            <div class="modal-body">
+		            	<div class="username-div">
+		            		<!--<label for="username">姓名</label>-->
+			            	<input type="text" class="username" disabled=""/>
+		            	</div>
+		            	<div class="position-div">
+		            		<label for="position">职级</label>
+			            	<select name="position" class="position">
+			            		<option value="web_engineer">web_engineer</option>
+					        	<option value="dataBase_engineer">dataBase_engineer</option>
+					        	<option value="Java_engineer">Java_engineer</option>
+					        	<option value="product_manager">product_manager</option>
+					        	<option value="UI_Designer">UI_Designer</option>
+					        	<option value="Hr">HR</option>
+					        	<option value="department_manager">department_manager</option>
+					        	<option value="general_manager">general_manager</option>
+			            	</select>
+		            	</div>
+		            	<div class="rank-div">
+		            		<label for="rank">职级</label>
+			            	<select name="rank" class="rank">
+			            		<option value="1">办事员</option>
+			            		<option value="2">部门主管</option>
+			            		<option value="3">主管领导</option>
+			            	</select>
+		            	</div>
+		            	<div class="directManager-div">
+		            		<label for="directManager">直属上级</label>
+			            	<select name="directManager" class="direct-manager">
+			            		<option value=""></option>
+			            	</select>
+		            	</div>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default cancelBtn" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-danger sureBtn">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		
+		<% include common/confirmModal %>
+	</body>
+	<% include common/commonScript %>
+	<script src="/javascripts/Web-index_admin.js" type="text/javascript" charset="utf-8"></script>
+</html>

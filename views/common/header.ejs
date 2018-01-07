@@ -1,0 +1,38 @@
+<div class="navbar navbar-static-top" role="navigation">
+	<div class="navbar-header">
+		<span class="navbar-brand">基于web的文件办公系统</span>
+	</div>
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="showtime-li">
+				<div class="show-date">2017-08-07</div>
+				<div class="show-time">24:00</div>
+			</li>
+			<% if (locals.username) { %>
+			<li>
+				<a href="#">
+					<label class="ico-rank"></label>
+					<%= username %>
+				</a>
+			</li>
+			<li class="operate-li">
+				<span></span>
+				<ul>
+					<li id="changePwd">修改密码</li>
+					<li id="logOut">退出</li>
+				</ul>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+</div>
+<div class="clear-fix"></div>
+<!--<div class="kr-container">-->
+	<div class="kindly-reminder">
+		<div class="kr-info">
+			您好，<span class="rank-name"></span><span class="staff-name"><%= username %></span>，今天是 <span class="show-date"></span>
+		</div>
+		<div id="weather">
+		</div>
+	</div>
+<!--</div>-->

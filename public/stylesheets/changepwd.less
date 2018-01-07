@@ -1,0 +1,135 @@
+@blue_0: #006498;
+@blue_1: #2681b0;
+@blue_2: #00a3c4;
+@blue_3: #59c2e0;
+@green_0: #5cb85c;
+@rose_red: #e51863;
+@shadowborder-top: 1px solid rgba(255,255,255,0.2);
+@shadowborder-bottom: 1px solid rgba(0,0,0,0.2);
+
+body{
+    background-color: #fff;
+}
+.vessel-outter{
+    position: relative;
+    margin-top: 50px;
+    .error-bar{
+        top: -54px;
+    }
+}
+.vessel{
+	width: 540px;
+	height: 282px;
+	padding: 0;
+	margin: 0 auto;
+	margin-top: 20px;
+	overflow: hidden;
+	position: relative;
+	background-color: #fff;
+	h2{
+	    display: none;
+	    margin-top: -2px;
+		padding-bottom: 10px;
+		border-bottom: solid 1px @blue_0;
+		color: @blue_0;
+	}
+	.twopart-vessel{
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    height: 240px;
+	    width: 1080px;
+	    background-color: #fff;
+	    .pwd-input-vessel{
+	        float: left;
+	    }
+	    .deal-pwd-vessel{
+	        float: right;
+	    }
+	}
+	.switch-btn{
+	    display: none;
+	    height: 40px;
+	    line-height: 40px;
+	    font-size: 15px;
+		border-bottom: solid 1px @blue_0;
+//		box-sizing: content-box;
+	    >div{
+	        text-align: center;
+	        height: 40px;
+//	        background-color: #fff;
+            color: #8ab2c7;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            &:hover{
+                color: @blue_0;
+//              font-weight: 600;
+            }
+	    }
+	    .left-btn{
+	        float: left;
+	        width: 50%;
+	    }
+	    .right-btn{
+	        float: right;
+	        width: 50%;
+	    }
+	    .active-btn{
+	        border: solid 1px @blue_0;
+	        border-bottom: none;
+	        border-radius: 5px 5px 0 0;
+	        background-color: #fff;
+	        color: @blue_0;
+	        font-weight: 600;
+	    }
+	}
+}	
+.pwd-input-vessel,.deal-pwd-vessel{
+	width: 540px;
+	margin: 0 auto;
+	padding-top: 5px;
+	>div{
+		margin-bottom: 20px;
+		color: #333;
+		>label{
+			display: inline-block;
+			width: 100px;
+			padding-right: 15px;
+			font-size: 16px;
+			font-weight: 500;
+			text-align: right;
+		}
+		>input{
+			width: 440px;
+			height: 38px;
+			padding-left: 10px;
+			font-size: 16px;
+			&::-webkit-input-placeholder {
+                color: #C0C0C0;
+            }
+            &::-moz-placeholder{
+                color: #C0C0C0;
+            }
+            &::-ms-input-placeholder{
+                color: #c0c0c0;
+            }
+		}
+	}
+	.error-vessel{
+	    height: 20px;
+	    margin: 0 0 2px 100px;
+	    color: #f00;
+	    .error{
+	        display: none;
+	    }
+	}
+	#subPwdBtn,#subDealPwdBtn{
+		width: 440px;
+		height: 38px;
+		font-size: 16px;
+		margin-left: 100px;
+		border-radius: 2px;
+	}
+}
+
+

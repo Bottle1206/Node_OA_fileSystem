@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">       
+    <title><%= title %></title>
+    <% include common/commonStyle %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common/signin.css" />
+  </head>
+  <body>
+    <div id="container" class="container">
+       <% if (locals.success) { %> 
+          <div id="alt_sucess" class="alert alert-success"> 
+            <%- success %> 
+          </div> 
+       <% } %> 
+
+      <% if (locals.error) { %> 
+        <div id="alt_warning" class="alert alert-warning"> 
+          <%= error %> 
+        </div> 
+      <% } %> 
+      <form class="form-signin" role="form" method="post">
+        <h2 class="form-signin-heading">注册</h2>
+        <input id="username" name="username" type="text" class="form-control" placeholder="用户名" required autofocus />
+        <input id="password" name="password" type="password" class="form-control" placeholder="密码" required/>
+        <input id="txtUserRePwd"  name="txtUserRePwd" type="password" class="form-control" placeholder="重复密码" required/>
+        <label for="position">职位:</label>
+        <select name="position" id="position" class="form-control">
+        	<option value="web_engineer">web_engineer</option>
+        	<option value="dataBase_engineer">dataBase_engineer</option>
+        	<option value="Java_engineer">Java_engineer</option>
+        	<option value="product_manager">product_manager</option>
+        	<option value="UI_Designer">UI_Designer</option>
+        	<option value="Hr">HR</option>
+        	<option value="department_manager">department_manager</option>
+        	<option value="general_manager">general_manager</option>
+        </select>
+        <label for="rank">等级（员工，经理，老板）:</label>
+        <select name="rank" id="rank" class="form-control">
+        	<option value="1">staff</option>
+        	<option value="2">manager</option>
+        	<option value="3">ceo</option>
+        </select>
+        
+        <button id="btnSub" class="btn btn-lg btn-primary" type="submit">注  册</button>
+        <a class="btn btn-link" href="/login" role="button">登  录</a>
+      </form>  
+    </div> 
+  </body>
+</html>
+
+<% include common/commonScript %>
+<script type="text/javascript">
+     String.prototype.format = function (args) {
+            var result = this;
+            if (arguments.length > 0) {
+                if (arguments.length == 1 && typeof (args) == "object") {
+                    for (var key in args) {
+                        if (args[key] != undefined) {
+                            var reg = new RegExp("({" + key + "})", "g");
+                            result = result.replace(reg, args[key]);
+                        }
+                    }
+                }
+                else {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] != undefined) {
+                            var reg = new RegExp("({)" + i + "(})", "g");
+                            result = result.replace(reg, arguments[i]);
+                        }
+                    }
+                }
+            }
+            return result;
+    }
+
+    $(function(){
+        $('#btnSub').on('click',function(){
+            var 
+            $username = $('#username'),
+            usernameVal = $.trim($username.val()),            
+            $password = $('#password'),
+            passwordVal = $.trim($password.val()),
+            $txtUserRePwd = $('#txtUserRePwd'),
+            txtUserRePwdVal = $.trim($txtUserRePwd.val()),
+            errorTip = '<div id="errorTip" class="alert alert-warning">{0}</div> ';
+            $("#errorTip,#alt_sucess,#alt_warning").remove();
+            if(usernameVal.length == 0)
+            {
+                $("#container").prepend(errorTip.format('用户名不能为空'));                
+                $username.focus();
+                return false;
+            }
+
+            if(passwordVal.length == 0)
+            {                
+                $("#container").prepend(errorTip.format('密码不能为空'));
+                $password.focus();
+                return false;
+            }
+
+            if(txtUserRePwdVal.length == 0)
+            {
+                $("#container").prepend(errorTip.format('重复密码不能为空'));                
+                $txtUserRePwd.focus();
+                return false;
+            }
+
+            if(passwordVal != txtUserRePwdVal)
+            {                 
+                 $("#container").prepend(errorTip.format('两次密码不一致'));      
+                 $password.focus();
+                 return false;
+            }
+            
+            if(!$('#position').val()){
+            	$("#container").prepend(errorTip.format('position'));      
+                 return false;
+            }
+            
+            if(!$('#rank').val()){
+            	$("#container").prepend(errorTip.format('rank'));      
+                 return false;
+            }
+
+            return true;
+        })
+    });
+
+</script>

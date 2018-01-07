@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			<%= title %>
+		</title>
+		<% include common/commonStyle %>
+		<link rel="stylesheet/less" type="text/css" href="/stylesheets/common/index.less"/>
+		<link rel="stylesheet/less" href="/stylesheets/index_staff.less"/>
+	</head>
+	<body>
+		<% include common/header %>
+		<div class="vessel">
+			<div class="error-bar">上传成功！</div>
+			<ul id="UserList">
+				<li class="row row-user li-complete">
+					<div class="li-title">已完成:
+						<div class="filter">
+							显示
+							<select name="date-filter" class="date-filter">
+								<option value="0">所有</option>
+								<option value="1">近三天</option>
+								<option value="2">近一周</option>
+								<option value="3">近一个月</option>
+							</select>
+							共<span class="amount-span">0</span>条数据
+						</div>
+					</div>
+					<div class="row column">
+						<div class="col-xs-3 col-sm-3">任务名</div>
+						<div class="col-xs-4 col-sm-4">文件名</div>
+						<div class="col-xs-4 col-sm-4">状态</div>
+						<div class="col-xs-1 col-sm-1 text-center">状态详情</div>
+					</div>
+					<ul>
+						<li class="empty">暂无文件</li>
+					</ul>
+				</li>
+				<li class="row row-user li-underway">
+					<div class="li-title">进行中:
+						<div class="filter">
+							显示
+							<select name="date-filter" class="date-filter">
+								<option value="0">所有</option>
+								<option value="1">近三天</option>
+								<option value="2">近一周</option>
+								<option value="3">近一个月</option>
+							</select>
+							共<span class="amount-span">0</span>条数据
+						</div>
+					</div>
+					<div class="row column">
+						<div class="col-xs-3 col-sm-3">任务名</div>
+						<div class="col-xs-4 col-sm-4">文件名</div>
+						<div class="col-xs-4 col-sm-4">状态</div>
+						<div class="col-xs-1 col-sm-1 text-center">状态详情</div>
+					</div>
+					<ul>
+						<li class="empty">暂无文件</li>
+					</ul>
+				</li>
+				<li class="row row-user li-reject">
+					<div class="li-title">被驳回:
+						<div class="filter">
+							显示
+							<select name="date-filter" class="date-filter">
+								<option value="0">所有</option>
+								<option value="1">近三天</option>
+								<option value="2">近一周</option>
+								<option value="3">近一个月</option>
+							</select>
+							共<span class="amount-span">0</span>条数据
+						</div>
+					</div>
+					<div class="row column">
+						<div class="col-xs-3 col-sm-3">任务名</div>
+						<div class="col-xs-4 col-sm-4">文件名</div>
+						<div class="col-xs-4 col-sm-4">状态</div>
+						<div class="col-xs-1 col-sm-1 text-center">更新</div>
+					</div>
+					<ul>
+					</ul>
+				</li>
+			</ul>
+		
+			<h3>上传新文件:</h3>
+			<div class="upload-module">
+				<button type="button" class="upload-btn" id="btnSub">上传</button>
+				<div class="upload-container">
+					<div class="upload-title">
+						<div class="left">任务名</div>
+						<input type="text" name="taskName" id="taskName" placeholder="请输入任务名称"/>
+					</div>
+					<div class="upload-name">
+						<div class="left">选择文件</div>
+						<div id="filePath">未选择任何文件</div>
+					</div>
+				</div>
+			</div>
+				
+			<form class="form-signin" role="form" method="post"  id="formData">
+				<input type="file" name="fulAvatar" id="fulAvatar" class="form-control" />
+			</form>
+			
+			<form class="form-signin" role="form" method="post"  id="updateForm">
+				<input type="file" id="updateInput" name="fulAvatar"/>
+			</form>
+			
+		</div>
+		<div class="modal fade" tabindex="-1" role="dialog" id="showStatusList">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header row">
+						<div class="col-xs-5 col-sm-5 file-title">
+						</div>
+						<div class="col-xs-7 col-sm-7 file-name">
+						</div>
+						<button type="button" class='close-btn' data-dismiss="modal"></button>
+					</div>
+					<div class="modal-body">
+						<ul class="status-list">
+						</ul>
+					</div>
+				</div> <!-- /.modal-content -->
+			</div> <!-- /.modal-dialog -->
+		</div> <!-- /.modal -->
+		<% include common/confirmModal %>
+	</body>
+	<% include common/commonScript %>
+	<script src="/javascripts/common/getUserName.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/Web-index_staff.js" type="text/javascript" charset="utf-8"></script>
+</html>

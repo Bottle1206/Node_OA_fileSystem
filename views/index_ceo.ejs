@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			<%= title %>
+		</title>
+		<% include common/commonStyle %>
+		<link rel="stylesheet/less"  href="/stylesheets/common/index.less"/>
+		<link rel="stylesheet/less" href="/stylesheets/index_ceo.less"/>
+	</head>
+	<body>
+		<% include common/header %>
+		<div class="vessel">
+			<ul id="UserList">
+				<li class="row row-user li-complete">
+					<div class="li-title">已批阅
+						<div class="filter">
+							显示
+							<select name="date-filter" class="date-filter">
+								<option value="0">所有</option>
+								<option value="1">近三天</option>
+								<option value="2">近一周</option>
+								<option value="3">近一个月</option>
+							</select>
+							共<span class="amount-span">0</span>条数据
+						</div>
+					</div>
+					<div class="row column">
+						<div class="col-xs-2 col-sm-2">职员</div>
+						<div class="col-xs-3 col-sm-3">任务名</div>
+						<div class="col-xs-4 col-sm-4">文件名</div>
+						<div class="col-xs-2 col-sm-2">状态</div>
+						<div class="col-xs-1 col-sm-1 text-center">详情</div>
+					</div>
+					<ul>
+						<li class="empty">暂无文件</li>
+					</ul>
+				</li>
+				<li class="row row-user li-wait">
+					<div class="li-title">待阅
+						<div class="filter">
+							显示
+							<select name="date-filter" class="date-filter">
+								<option value="0">所有</option>
+								<option value="1">近三天</option>
+								<option value="2">近一周</option>
+								<option value="3">近一个月</option>
+							</select>
+							共<span class="amount-span">0</span>条数据
+						</div>
+					</div>
+					<div class="row column">
+						<div class="col-xs-2 col-sm-2">职员</div>
+						<div class="col-xs-2 col-sm-2">任务名</div>
+						<div class="col-xs-4 col-sm-4">文件名</div>
+						<div class="col-xs-2 col-sm-2">状态</div>
+						<div class="col-xs-2 col-sm-2 text-center">操作</div>
+					</div>
+					<ul>
+						<li class="empty">暂无新文件需要处理</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<% include common/confirmModal %>
+		<% include common/dealFileModal %>
+		<% include common/dealPwdModal %>
+	</body>
+	<% include common/commonScript %>
+	<script src="/javascripts/Web-index_ceo.js" type="text/javascript" charset="utf-8"></script>
+</html>

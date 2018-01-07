@@ -1,0 +1,191 @@
+.hide{
+	display: none;
+}
+
+.navbar{
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	padding: 0;
+	background-color: #006498;
+	color: #FFF;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	margin-bottom: 5px !important;
+}
+.navbar-header{
+	/*position: relative;*/
+}
+.navbar-brand{
+	color: #529ddd;
+}
+#showTime{
+	position: absolute;
+	/*vertical-align: bottom;*/
+	bottom: 12px;
+	font-size: 12px;
+	color: #428bca;
+}
+
+.navbar-right a{
+	color: #FFF;
+	padding-left: 30px !important;
+}
+.navbar a .ico-rank{
+	position: absolute;
+	top: 15px;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+}
+.navbar-right .showtime-li{
+	padding: 10px 10px;
+}
+.showtime-li .show-date{
+	height: 15px;
+	font-size: 12px;
+	color: #35a3dc;
+}
+.showtime-li .show-time{
+	height: 15px;
+	font-size: 14px;
+	color: #a8dcf7;
+}
+.ico-rank.ico-admin{
+	background: url(/images/ico-admin.png) no-repeat center;
+}
+.ico-rank.ico-staff{
+	background: url(/images/ico-staff.png) no-repeat center;
+}
+.ico-rank.ico-manager{
+	background: url(/images/ico-manager.png) no-repeat center;
+}
+.ico-rank.ico-ceo{
+	background: url(/images/ico-boss.png) no-repeat center;
+}
+
+.navbar li a:hover{
+	background-color: #006498;
+}
+.navbar-right{
+	margin: 0 !important;
+}
+.navbar .operate-li{
+	position: relative;
+	height: 50px;
+}
+.navbar .operate-li span:hover{
+	/*background-color: #017dbd;*/
+}
+.navbar .operate-li span{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+	background: url(/images/btn-open.png) no-repeat center;
+	transition: transform 0.2s linear;
+}
+.rotate-over{
+	transform: rotate(180deg);	
+}
+.navbar .operate-li ul{
+	position: absolute;
+	top: 51px;
+	right: 0;
+	display: none;
+	width: 90px;
+	height: 56px;
+	background-color: #006498;
+	border-left: 1px solid rgba(0,0,0,0.2);
+	color: #FFF;
+	box-shadow: -1px 1px 1px #666;
+}
+.navbar .operate-li ul li{
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+    /*border-top: 1px solid rgba(255,255,255,0.2);*/
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.navbar .operate-li ul li:hover{
+	background-color: #017dbd;
+}
+
+
+*{
+	box-sizing: border-box;
+}
+body{
+	/*background-color: #acd4e0;*/
+	/*color: #FFF;*/
+	position: relative;
+}
+html,body,h1,h2,h3,h4,h5,h6{
+	padding: 0;
+	margin: 0;
+	font-family: "microsoft yahei";
+}
+p{
+	line-height: 1.4;
+}
+ul,li{
+	list-style: none;
+}
+textarea,input,button,a,select{
+	outline: none;
+}
+
+.modal-dialog{
+	margin-top: 150px;
+}
+.modal-header, .modal-footer, .modal-body{
+	padding: 10px 15px;
+} 
+.modal-content{
+	border-radius: 0;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+.row{
+	margin: 0;
+	padding: 0;
+}
+
+.alert-modal .modal-dialog{
+	width: 400px;
+}
+.alert-modal .modal-header{
+	background-color: #006498;
+	color: #FFF;
+}
+.alert-modal .modal-body{
+	text-align: center;
+}
+.alert-modal .modal-body img{
+	margin-bottom: 12px;
+}
+.alert-modal .modal-body p{
+	margin: 0;
+	font-size: 15px;
+	color: #00486d;
+}
+.alert-modal .modal-footer{
+	border: none;
+	padding: 8px 15px 12px 15px;
+	text-align: center;
+}
+.alert-modal .modal-footer .btn{
+	border-radius: 0;
+}
+
+#alertModal .modal-footer{
+	padding-top: 0;
+	text-align: right;
+}
+#alertModal .modal-footer .btn{
+	width: 54px;
+	height: 30px;
+	padding: 0;
+}

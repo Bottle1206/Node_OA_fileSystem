@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>修改密码</title>
+		<% include common/commonStyle %>
+		<link rel="stylesheet/less"  href="/stylesheets/common/index.less"/>
+		<link rel="stylesheet/less" href="/stylesheets/changepwd.less"/>
+	</head>
+	<body>
+		<div class="navbar navbar-static-top" role="navigation">
+			<div class="navbar-header">
+				<span class="navbar-brand">修改密码</span>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="showtime-li">
+						<div class="show-date">2017-08-07</div>
+						<div class="show-time">24:00</div>
+					</li>
+					<li>
+						<a href="#">
+							<label class="ico-rank"></label>
+							<span id="username"></span>
+						</a>
+					</li>
+					<li class="operate-li">
+						<span></span>
+						<ul>
+							<li id="changePwd">修改密码</li>
+							<li id="logOut">退出</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear-fix"></div>
+		<div class="vessel-outter">
+			<div class="error-bar">修改成功！</div>
+			<div class="vessel">
+				<h2>修改密码</h2>
+				<div class="switch-btn">
+					<div class="left-btn active-btn">
+						修改登录密码
+					</div>
+					<div class="right-btn">
+						修改操作密码
+					</div>
+				</div>
+				<div class="twopart-vessel">
+					<div class="pwd-input-vessel">
+						<div class="error-vessel">
+							<div class="error" id="logPwdErr">原密码错误</div>
+						</div>
+						<div class="oldpwd-div">
+							<label for="username">原密码:
+							</label><input type="password" name="oldpwd" id="oldpwd" placeholder="请输入原密码"/>
+						</div>
+						<div class="newpwd-div">
+							<label for="username">新密码:
+							</label><input type="password" name="newpwd" id="newpwd" placeholder="请输入新密码"/>
+						</div>
+						<div class="renewpwd-div">
+							<label for="username">确认密码:
+							</label><input type="password" name="renewpwd" id="renewpwd" placeholder="请再次输入新密码"/>
+						</div>
+						<button type="button" class="btn btn-danger" id="subPwdBtn">确认修改</button>
+					</div>
+					<div class="deal-pwd-vessel">
+						<div class="error-vessel">
+							<div class="error" id="dealPwdErr">原密码错误</div>
+						</div>
+						<div class="oldpwd-div">
+							<label for="username">原操作密码:
+							</label><input type="password" name="oldpwd" id="oldDealPwd" placeholder="请输入原操作密码"/>
+						</div>
+						<div class="newpwd-div">
+							<label for="username">新操作密码:
+							</label><input type="password" name="newpwd" id="newDealPwd" placeholder="请输入新操作密码"/>
+						</div>
+						<div class="renewpwd-div">
+							<label for="username">确认密码:
+							</label><input type="password" name="renewpwd" id="reNewDealPwd" placeholder="请再次输入新密码"/>
+						</div>
+						<button type="button" class="btn btn-primary" id="subDealPwdBtn">确认修改</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% include common/confirmModal %>
+	</body>
+	<% include common/commonScript %>
+	<script src="/javascripts/Web-changepwd.js" type="text/javascript" charset="utf-8"></script>
+</html>

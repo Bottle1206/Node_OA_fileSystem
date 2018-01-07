@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>登录</title>
+		<% include common/commonStyle %>
+		<!--<link rel="stylesheet" type="text/css" href="/stylesheets/common/signin.css" />-->
+		<link rel="stylesheet/less" href="/stylesheets/login.less"/>
+	</head>
+	<body>
+		<div class="vessel">
+			<div class="left-part">
+				<span>
+					OFFICE AUTOMATION
+				</span>
+			</div>
+			<div class="right-part">
+				<!--<h2>欢迎使用文件自动化办公系统</h2>-->
+				<div class="slogan">
+					<img src="/images/office.png"/>
+					<span>OFFICE AUTOMATION</span>
+					<div class="introduce">
+						全新高效的办公模式
+					</div>
+				</div>
+				
+				<div class="login-container">
+					<!--<div class="login-title">请登录OA系统，体验全新高效的办公模式</div>-->
+					<div class="error-container">
+						<div id="altSuccess" class="login-success">
+							登录成功
+						</div>
+						<div id="altWarning" class="login-error">
+							可控制发生错误
+						</div>
+					</div>
+					<div class="login-body">
+						<label for="username" class="input-label label-user">
+							<input name="username" type="text" class="hide" />
+							<input id="username" name="username" type="text" placeholder="请输入用户名" required />
+						</label>
+						<label for="password" class="input-label label-pwd">
+							<input type="text" name="password" class="hide" />
+							<input id="password" name="password" type="password" placeholder="请输入密码" required/>
+						</label>
+						<div class="remember">
+						    <label for="chbRem" class="lebel-check"></label><span>记住我</span>
+						    <input name="chbRem" id="chbRem" type="checkbox" checked>
+				            <span class="span-check"></span>
+						</div>
+					</div>
+					<div class="login-footer">
+						<button id="btnLogin" class="btn-login" type="button">登  录</button>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+	</body>
+</html>
+<% include common/commonScript %>
+<script type="text/javascript">
+	$(function() {
+		$('#username').val(localStorage.getItem('username'));
+		$('#password').val(localStorage.getItem("pwd"));
+		
+		$('#btnLogin').on('click', function() {
+			var $errorShow = $('#altWarning');
+			$('.error-container > div').hide();
+			var	usernameVal = $.trim($('#username').val());
+			var	passwordVal = $('#password').val();
+			if(usernameVal) {
+				if(passwordVal) {
+					var args = {
+						"username": usernameVal,
+						"password": passwordVal,
+						"chbRem": $('#chbRem').is(':checked')
+					}
+					$.post('/login', args, function(res) {
+						res = $.parseJSON(res);
+						switch (res.msg){
+							case 'no_account':
+								$errorShow.text('账户不存在！').fadeIn('fast');
+								break;
+							case 'account_pwd_error':
+								$errorShow.text('密码错误！').fadeIn('fast');
+								break;
+							case 'success':
+								if(args.chbRem){
+									localStorage.setItem("username",usernameVal);
+									localStorage.setItem("pwd",passwordVal);
+								}else{
+									if(localStorage.getItem('username') == usernameVal){
+										localStorage.removeItem("pwd");
+									}
+								}
+								$('#altSuccess').fadeIn('fast',function(){
+									res.rank = Number(res.rank);
+									localStorage.setItem('rank',res.rank);
+									switch (res.rank){
+										case 0://admin
+											window.location.href='\admin';
+											break;
+										case 1://staff
+											window.location.href='\staff';
+											break;
+										case 2://manager
+											window.location.href='\manager';
+											break;
+										case 3://ceo
+											window.location.href='\ceo';
+											break;
+										default:
+											break;
+									}
+								});
+								break;
+							default:
+								break;
+						}
+					})
+				}else{
+					$('#password').focus();
+					$errorShow.text("密码不能为空！").fadeIn('fast');
+				}
+			}else{
+				$('#username').focus();
+				$errorShow.text("用户名不能为空！").fadeIn('fast');
+			}
+		});
+		
+		//点击“记住密码”label
+	    $('.lebel-check').click(function() {
+	        $('.span-check').fadeToggle(10);
+	    });
+	    
+	    $('#username').on('input',function(){
+	    	var $thisTarget = $('#altWarning');
+	    	if($thisTarget.text() == "用户名不能为空！" || $thisTarget.text() == '账户不存在！'){
+	    		$thisTarget.fadeOut();
+	    	}
+	    });
+	    
+	    $('#password').on('input',function(){
+	    	var $thisTarget = $('#altWarning');
+	    	if($thisTarget.text() == "密码不能为空！" || $thisTarget.text() == '密码错误！'){
+	    		$thisTarget.fadeOut();
+	    	}
+	    })
+	    
+		
+		$('.vessel').keydown(function(e){
+			if(e.keyCode == 13){
+				$('#btnLogin').click();
+			}
+		})
+	
+		
+	});
+</script>
